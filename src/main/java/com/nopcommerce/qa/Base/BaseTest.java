@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import com.nopcommerse.qa.Page.LoginPage;
 import com.nopcommerse.qa.Page.RegistrationPage;
 
 public class BaseTest {
@@ -13,6 +14,7 @@ public class BaseTest {
 	public WebDriver driver;
 	public Properties prop;
 	public RegistrationPage registerpage;
+	public LoginPage loginpage;
 
 	@BeforeTest
 	public void Setup() {
@@ -22,11 +24,12 @@ public class BaseTest {
 		String browser = prop.getProperty("url");
 		driver.get(browser);
 		registerpage = new RegistrationPage(driver);
+		loginpage = new LoginPage(driver);
 
 	}
 
 	@AfterTest
 	public void teardown() {
-		//driver.quit();
+		// driver.quit();
 	}
 }

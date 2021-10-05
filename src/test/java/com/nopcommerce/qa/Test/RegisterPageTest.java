@@ -1,5 +1,7 @@
 package com.nopcommerce.qa.Test;
 
+import java.util.Random;
+
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -25,12 +27,21 @@ public class RegisterPageTest extends BaseTest {
 		Object[][] data = excelutils.getTestData("Registration");
 		return data;
 	}
+	
+	public String getRandomEmailid()
+	{
+		Random randomnumber=new Random();
+		
+		String random="Noc_Commerce"+randomnumber.nextInt(1000)+"@gmail.com";
+		return random;
+	}
+	
 
 	@Test(priority = 3, dataProvider = "getTestDataTest")
 	public void RegistrationPageTest(String Gender, String FirstName, String LastName, String Date, String month,
-			String year, String email, String CompanyName, String Password, String ConfirmPassword) {
+			String year, String CompanyName, String Password, String ConfirmPassword) {
 
-		Assert.assertTrue(registerpage.registerDetailsFile(Gender, FirstName, LastName, Date, month, year, email,
+		Assert.assertTrue(registerpage.registerDetailsFile(Gender, FirstName, LastName, Date, month, year, getRandomEmailid(),
 				CompanyName, Password, ConfirmPassword));
 		registerpage.registerlinkClick();
 	}

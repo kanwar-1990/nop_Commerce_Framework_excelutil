@@ -36,8 +36,7 @@ public class BasePage {
 			WebDriverManager.safaridriver().setup();
 
 			driver = new SafariDriver();
-		}
-		if (BrowserName.equals("IE")) {
+		} else if (BrowserName.equals("IE")) {
 			WebDriverManager.iedriver().setup();
 
 			driver = new InternetExplorerDriver();
