@@ -18,19 +18,21 @@ public class BasePage {
 
 	public WebDriver driver;
 	public Properties prop;
+	public OptionManager Op=new OptionManager(prop);
 
 	public WebDriver init_driver(String BrowserName) {
 		System.out.println("The browser value is :" + BrowserName);
+		Op=new OptionManager(prop);
 
 		if (BrowserName.equals("chrome")) {
 			WebDriverManager.chromedriver().setup();
 
-			driver = new ChromeDriver();
+			driver = new ChromeDriver(Op.getChromeOption());
 
 		} else if (BrowserName.equals("firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 
-			driver = new FirefoxDriver();
+			driver = new FirefoxDriver(Op.getFireFoxOptions());
 
 		} else if (BrowserName.equals("safari")) {
 			WebDriverManager.safaridriver().setup();

@@ -46,7 +46,7 @@ public class LoginPageTest extends BaseTest {
 
 	@Test(priority = 6)
 	public void selectFromCategoryTest() {
-		loginpage.SelectFromSubCategories("Electronics", "Others");
+		loginpage.SelectFromSubCategories("Electronics", "Cell phones");
 	}
 
 }
